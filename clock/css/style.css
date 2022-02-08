@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color: #282828;
+  font-family: "Orbitron", sans-serif;
+}
+
+.clock {
+  --degree: 0deg;
+  --waves-play-state: running;
+  --clock-width: 400px;
+  width: var(--clock-width);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 10px solid #282828;
+  background-color: #282828;
+  position: relative;
+  transition-duration: 1s;
+  box-shadow: -4px -4px 10px rgba(67, 67, 67, 0.5), inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(67, 67, 67, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3);
+  margin: 6rem;
+  filter: hue-rotate(var(--degree));
+}
+.clock:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: -4px -4px 10px rgba(67, 67, 67, 0.5), inset 4px 4px 10px rgba(0, 0, 0, 0.5), inset -4px -4px 10px rgba(67, 67, 67, 0.5), 4px 4px 10px rgba(0, 0, 0, 0.3);
+  animation: waves 10s alternate 0s infinite;
+  animation-play-state: var(--waves-play-state);
+}
+.clock .point {
+  width: 4%;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 50%;
+  background-color: black;
+  box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0.25);
+  filter: invert(1);
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%) rotateZ(var(--degree));
+  filter: invert(1);
+}
+.hand::before {
+  content: "";
+  width: inherit;
+  height: calc(var(--clock-width)/10);
+  background-color: inherit;
+  top: 100%;
+  position: absolute;
+  box-shadow: inset 0 0 0px 4px rgba(0, 0, 0, 0.5);
+}
+.hand::after {
+  content: attr(data-value);
+  width: calc(var(--clock-width)/20);
+  aspect-ratio: 1;
+  background-color: transparent;
+  color: white;
+  top: calc((var(--height-diff) + var(--clock-width)/20 + var(--value-height)) * -1);
+  transform: translate(-50%, -100%) rotate(calc(var(--degree)*-1));
+  position: absolute;
+  font-size: calc(var(--clock-width)/20);
+  text-align: center;
+  filter: invert(1);
+}
+.hand.second {
+  --degree: 0;
+  --height-diff: calc(var(--clock-width)/20);
+  --value-height: calc(var(--clock-width)/8);
+  width: 2px;
+  height: calc(var(--clock-width)/2 - var(--height-diff));
+  background-color: black;
+  transform-origin: bottom;
+}
+.hand.minute {
+  --degree: 0;
+  --height-diff: calc(var(--clock-width)/8);
+  --value-height: calc(var(--clock-width)/16);
+  width: 5px;
+  height: calc(var(--clock-width)/2 - var(--height-diff));
+  background-color: blueviolet;
+  transform-origin: bottom;
+}
+.hand.hour {
+  --degree: 0;
+  --height-diff: calc(var(--clock-width)/4);
+  --value-height: 0px;
+  width: 8px;
+  height: calc(var(--clock-width)/2 - var(--height-diff));
+  background-color: red;
+  transform-origin: bottom;
+}
+
+@keyframes waves {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+@media only screen and (max-device-width: 480px) {
+  /* styles for mobile browsers smaller than 480px; */
+  .clock {
+    --clock-width: 200px;
+    margin: 0;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
