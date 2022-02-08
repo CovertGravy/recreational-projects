@@ -1,15 +1,26 @@
-<div class="clock">
-	<div class="second hand"></div>
-	<div class="minute hand"></div>
-	<div class="hour hand"></div>
-	<div class="point"></div>
-</div>
-<div class="actions">
-	<button onclick="setWaveAnimationPlayState('running')">Start Waves</button>
-	<button onclick="setWaveAnimationPlayState('paused')">Pause Waves</button>
-</div>
-<div class="actions-time">
-	<input type="time" onchange="onCustomTimeChange(this.value)">
-</div>
-
-<!-- <div class="time"></div> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Clocked</title>
+</head>
+<body>
+  <div class="clock">
+    <div class="second hand"></div>
+    <div class="minute hand"></div>
+    <div class="hour hand"></div>
+    <div class="point"></div>
+  </div>
+  <div class="actions">
+    <button onclick="setWaveAnimationPlayState('running')">Start Waves</button>
+    <button onclick="setWaveAnimationPlayState('paused')">Pause Waves</button>
+  </div>
+  <div class="actions-time">
+    <input type="time" onchange="onCustomTimeChange(this.value)">
+  </div>
+  <script src="index.js"></script>  
+</body>
+</html>
